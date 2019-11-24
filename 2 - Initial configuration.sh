@@ -36,9 +36,9 @@ sudo chattr +i $LOCAL_PATH
 #Create autoconnect network
 SYSTEMD_PATH="/etc/systemd/system"
 NETWORK_CONNECTED_SERVICE="network_connected.service"
-REMOTE_DISK_MOUNT="remote_disk.mount"
+REMOTE_DISK_MOUNT=`echo ${LOCAL_PATH:1}.mount | sed 's$/$-$g'`
 
-sudo tee -a $SYSTEMD_PATH/$NETWORK_CONNECTED_SERVICE > /dev/null <<EOL
+sudo tee $SYSTEMD_PATH/$NETWORK_CONNECTED_SERVICE > /dev/null <<EOL
 [Unit]
 After=network-online.target
 
@@ -54,7 +54,7 @@ EOL
 sudo chmod 644 $SYSTEMD_PATH/$NETWORK_CONNECTED_SERVICE
 
 #Create automount disk
-sudo tee -a $SYSTEMD_PATH/$REMOTE_DISK_MOUNT  > /dev/null <<EOL
+sudo tee $SYSTEMD_PATH/$REMOTE_DISK_MOUNT  > /dev/null <<EOL
 [Unit]
 Description=The shared remote disk
 Wants=network_connected.service
@@ -71,6 +71,7 @@ WantedBy=multi-user.target
 EOL
 sudo chmod 644 $SYSTEMD_PATH/$REMOTE_DISK_MOUNT
 #Enabling automount
+sudo systemctl daemon-reload
 sudo systemctl enable $NETWORK_CONNECTED_SERVICE $REMOTE_DISK_MOUNT
 
 #Start kodi on boot
