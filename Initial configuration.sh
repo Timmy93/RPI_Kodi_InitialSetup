@@ -120,5 +120,9 @@ fi
 echo "[+] Added kodi at startup"
 
 #Reboot
+rm "$SETTINGS_FILE"
+if [ -f "${SETTINGS_FILE}" ]; then
+	echo "[+] Removed settings file with your secrets"
+fi
 echo "[+] Setup completed, rebooting..."
 sudo reboot
