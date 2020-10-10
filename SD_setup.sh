@@ -12,9 +12,8 @@
 
 'STEP
 # - Create an empty file called "ssh" inside boot 
-# - Setup the wifi: 
-		Set the ssid and the psw encoded in wpa config file 
-		The file will be the placed on boot: /etc/wpa_supplicant/wpa_supplicant.conf
+# - Setup the wifi using wpa_supplicant config
+# - Import kodi settings if any
 '
 
 #STEP 0 - Defining the variables
@@ -29,9 +28,6 @@ if [ -f "${SETTINGS_FILE}" ]; then
 else
 	echo "[X] Settings file not defined - Create the settings file [${SETTINGS_FILE}]"
 fi
-
-BOOT_PARTITION="/media/$USER/boot"
-HOME_PI="/media/$USER/rootfs/home/pi"
 
 #STEP 1 - Configuring environment
 #Enable ssh

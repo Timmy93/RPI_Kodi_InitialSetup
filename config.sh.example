@@ -2,6 +2,12 @@
 
 #Defining here all the variables
 
+##SD Settings
+#The directory where the boot partition is mounted
+BOOT_PARTITION="/media/$USER/boot"
+#The directory where the home partition is mounted
+HOME_PI="/media/$USER/rootfs/home/pi"
+
 ##WIFI Settings
 #WiFI Name
 SSID=""
