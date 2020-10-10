@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Defining here all the variables
+
+##WIFI Settings
+#WiFI Name
+SSID=""
+#WiFi Password
+PSW=""
+#WiFi nation / Nation where the WiFi is working
+COUNTRY=""
+
+##Kodi settings
+#Backup file
+KODI_BACKUP=""
+
+##Network disk mounting setting
+#Where the disk will be mounted
+LOCAL_PATH="/media/pi/myRemoteHardDisk"
+#The IP of the disk (Use local IP) 
+REMOTE_IP="192.168.1.10"
+#The remote IP to mount
+REMOTE_PATH="/media/myComputerUser/myLocalHardDisk"
